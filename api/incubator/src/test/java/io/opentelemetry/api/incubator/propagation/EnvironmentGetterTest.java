@@ -50,7 +50,7 @@ class EnvironmentGetterTest {
     carrier.put("K1", "V1");
     carrier.put("K2", "V2");
 
-    assertThat(EnvironmentGetter.getInstance().keys(carrier)).containsExactlyInAnyOrder("K1", "K2");
+    assertThat(EnvironmentGetter.getInstance().keys(carrier)).containsExactlyInAnyOrder("k1", "k2");
     assertThat(EnvironmentGetter.getInstance().keys(null)).isEmpty();
   }
 

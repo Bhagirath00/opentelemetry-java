@@ -6,7 +6,9 @@
 package io.opentelemetry.api.incubator.propagation;
 
 import io.opentelemetry.context.propagation.TextMapGetter;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.logging.Level;
@@ -59,7 +61,11 @@ public final class EnvironmentGetter implements TextMapGetter<Map<String, String
     if (carrier == null) {
       return Collections.emptyList();
     }
-    return carrier.keySet();
+    List<String> result = new ArrayList<>(carrier.size());
+    for (String key : carrier.keySet()) {
+      result.add(key.toLowerCase(Locale.ROOT));
+    }
+    return result;
   }
 
   @Nullable
